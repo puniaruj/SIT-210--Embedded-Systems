@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remote Traffic Light Control</title>
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"></script>
+</head>
+<body>
+  <h1>Remote Traffic Light Control</h1>
+  
+  <div>
+    <label>
+      <input type="checkbox" id="redToggle" onclick="toggleLight('red')"> Red
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="greenToggle" onclick="toggleLight('green')"> Green
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="blueToggle" onclick="toggleLight('blue')"> Blue
+    </label>
+  </div>
+
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "your_firebase_api_key",
+      authDomain: "your_project_id.firebaseapp.com",
+      databaseURL: "your_firebase_database_url",
+      projectId: "your_project_id",
+      storageBucket: "your_project_id.appspot.com",
+      messagingSenderId: "your_messaging_sender_id",
+      appId: "your_app_id"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    // Function to toggle lights
+    function toggleLight(color) {
+      const checkbox = document.getElementById(`${color}Toggle`);
+      const isChecked = checkbox.checked;
+      firebase.database().ref(`/trafficLights/${color}`).set(isChecked);
+    }
+  </script>
+</body>
+</html>
