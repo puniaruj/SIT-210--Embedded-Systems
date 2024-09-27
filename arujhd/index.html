@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Lights</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center>
+    <div class="navbar">
+        <div class="deakin">
+          <b>
+            <p class="nav">SIT - 210 : Embedded System Designs</p>
+          </b>
+        </div>
+        <div class="other">
+          <p class="task">Task 4.2HD</p>
+          <p class="nam">Aruj Punia</p>
+        </div>
+      </div>
+    </center>
+    <hr color="black" width="100%">
+    <br>
+  <div class="heading">Remote Traffic Light Control System</div>
+  <div class="author">By Aruj Punia</div>
+  <div class="trafficlight">
+    <div class="protector"></div>
+    <div class="protector"></div>
+    <div class="protector"></div>
+    <div class="light red" id="red-light"></div>
+    <div class="light yellow" id="yellow-light"></div>
+    <div class="light green" id="green-light"></div>
+  </div>
+<!-- //integerating the firebase through JS  -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+
+  <!-- //Adding the firebase credentials found in web app settings on the dev console -->
+  <script>
+   const firebaseConfig = {
+  apiKey: "AIzaSyDrwCzZC6wZn9PXOxeSoO5z3EEwFstD8TA", //API key
+  authDomain: "arujhdtask.firebaseapp.com", //domainurl
+  databaseURL: "https://arujhdtask-default-rtdb.firebaseio.com/", //databse url
+  projectId: "arujhdtask",
+  storageBucket: "arujhdtask.appspot.com",
+  messagingSenderId: "298296347265", 
+  appId: "1:298296347265:web:3a516e50f56605423d9b80",
+  measurementId: "G-KSPRK577ZK"
+};
+
+    firebase.initializeApp(firebaseConfig);
+
+    function LED_RED() {
+      firebase.database().ref("status/").set({
+        status: "RED"
+      })
+    }
+
+    function LED_YELLOW() {
+      firebase.database().ref("status/").set({
+        status: "YELLOW"
+      })
+    }
+
+    function LED_GREEN() {
+      firebase.database().ref("status/").set({
+        status: "GREEN"
+      })
+    }
+    function LED_OFF() {
+      firebase.database().ref("status/").set({
+        status: "OFF"
+      })
+    }
+  </script>
+
+  <script>
+    const redLight = document.getElementById('red-light');
+    const yellowLight = document.getElementById('yellow-light');
+    const greenLight = document.getElementById('green-light');
+  
+    redLight.addEventListener('click', () => {
+      if (redLight.style.backgroundColor === 'red') {
+        redLight.style.backgroundColor = 'transparent';
+        LED_OFF(); // Call the LED_OFF() function
+      } else {
+        redLight.style.backgroundColor = 'red';
+        yellowLight.style.backgroundColor = 'transparent';
+        greenLight.style.backgroundColor = 'transparent';
+        LED_RED(); // Call the LED_RED() function
+      }
+    });    
+  
+    yellowLight.addEventListener('click', () => {
+      if (yellowLight.style.backgroundColor === 'yellow') {
+        yellowLight.style.backgroundColor = 'transparent';
+        LED_OFF(); // Call the LED_OFF() function
+      } else {
+        yellowLight.style.backgroundColor = 'yellow';
+        redLight.style.backgroundColor = 'transparent';
+        greenLight.style.backgroundColor = 'transparent';
+        LED_YELLOW(); // Call the LED_YELLOW() function
+      }
+    });
+    
+    greenLight.addEventListener('click', () => {
+      if (greenLight.style.backgroundColor === 'green') {
+        greenLight.style.backgroundColor = 'transparent';
+        LED_OFF(); // Call the LED_OFF() function
+      } else {
+        greenLight.style.backgroundColor = 'green';
+        redLight.style.backgroundColor = 'transparent';
+        yellowLight.style.backgroundColor = 'transparent';
+        LED_GREEN(); // Call the LED_GREEN() function
+      }
+    });    
+  </script>  
+</body>
+</html>

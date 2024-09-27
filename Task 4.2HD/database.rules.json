@@ -1,6 +1,0 @@
-{
-  "rules": {
-    ".read": "now < 1633039200000",  // Timestamp for temporary access (October 1, 2024)
-    ".write": "now < 1633039200000"
-  }
-}

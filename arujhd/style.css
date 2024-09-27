@@ -1,0 +1,82 @@
+body {
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Gill Sans';
+  font-weight: bolder;
+}
+
+hr {
+  width: 100%;
+  border-top: 5px solid #ff0000;
+}
+
+.nam, .task, .nav {
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+}
+
+.navbar {
+  margin: 30px;
+  font-size: large;
+}
+
+.other {
+  display: inline;
+}
+
+.deakin {
+  display: inline;
+  font-size: larger;
+}
+
+.heading {
+  font-size: 34px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.trafficlight {
+  width: 150px;
+  height: 400px;
+  background: #222222;
+  border-radius: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.red {
+  border-color: #f0f0f0;
+}
+
+.light {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: auto;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.3s, border 0.3s;
+}
+
+.red { background: rgba(255, 0, 0, 0.3); border: 2px solid rgba(139, 0, 0, 0.5); }
+.yellow { background: rgba(255, 255, 0, 0.3); border: 2px solid rgba(218, 165, 32, 0.5); }
+.green { background: rgba(0, 255, 0, 0.3); border: 2px solid rgba(0, 100, 0, 0.5); }
+
+.red.active { background: red; border: 2px solid darkred; }
+.yellow.active { background: yellow; border: 2px solid goldenrod; }
+.green.active { background: lime; border: 2px solid darkgreen; }
+
+.author {
+  position: absolute;
+  bottom: 20px;
+  font-size: 26px;
+  color: #666;
+}
