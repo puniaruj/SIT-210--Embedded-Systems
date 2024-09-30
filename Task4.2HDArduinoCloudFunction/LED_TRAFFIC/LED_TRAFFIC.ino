@@ -15,7 +15,7 @@ void setup()
   Serial.begin(9600);
   pinMode(2, OUTPUT);
   pinMode(4, OUTPUT);
-  pinMode(6, OUTPUT);
+  pinMode(8, OUTPUT);
 
   // Connect to Wi-Fi
   connectToWiFi();
@@ -110,5 +110,5 @@ void controlLEDs(int red, int yellow, int green)
 {
   digitalWrite(2, red);
   digitalWrite(4, yellow);
-  digitalWrite(6, green);
+  digitalWrite(8, green);
 }
